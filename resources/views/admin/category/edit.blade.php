@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Edit Student</title>
+    <title>Edit Category</title>
 
     <style>
         body {
@@ -79,7 +79,7 @@
 <body>
 
     <div class="card">
-        <div class="card-header">Edit Student</div>
+        <div class="card-header">Edit Category</div>
 
         @if (session('success'))
             <div class="alert alert-success">
@@ -87,64 +87,38 @@
             </div>
         @endif
 
-        <form action="{{ route('students.update', $student->id) }}" method="POST">
+        <form action="{{ route('category.update', $categories->id) }}" method="POST">
              @csrf
-             @method('PATCH')
+             @method('POST')
 
             <div class="form-group" style="margin-right: 20px">
 
-                <div style="margin-bottom: 20px" class="mb-3">
+                {{-- <div style="margin-bottom: 20px" class="mb-3">
                     <label class="form-label" >Class</label>
                     <select class="form-control" name="class_id" required style="border:1px solid;">
                             @foreach ($classes as $row)
-                                <option value="{{ $row->id}}" @if ( $row->id ==  $student->class_id) selected @endif>{{ $row->class_name }}</option>
+                                <option value="{{ $row->id}}" @if ( $row->id ==  $categories->class_id) selected @endif>{{ $row->class_name }}</option>
                             @endforeach
                     </select>
 
-                </div>
+                </div> --}}
 
                 
                 <div style="margin-bottom: 20px" class="mb-3">
-                    <label class="form-label" >Name</label>
-                    <input type="text" name="name" value="{{ $student->name }}" placeholder="Enter Class Name"
+                    <label class="form-label" >Category Name</label>
+                    <input type="text" name="category_name" value="{{ $categories->category_name }}" placeholder="Enter Category Name"
                         required style="border:1px solid ;">
 
                 </div>
 
-
-                
-                <div style="margin-bottom: 20px" class="mb-3">
-                    <label class="form-label" >Roll</label>
-                    <input type="text" name="roll" value="{{ $student->roll }}" placeholder="Enter Roll"
-                        required style="border:1px solid ;">
-
-                    
-                </div>
-
-
-                <div style="margin-bottom: 20px" class="mb-3">
-                    <label class="form-label" >Email</label>
-                    <input type="text" name="email" value="{{ $student->email }}" placeholder="Enter Email"
-                        required style="border:1px solid {{ $errors->has('email') ? 'red' : '#ccc' }};">
-
-                    
-                </div>
-
-
-                <div style="margin-bottom: 20px" class="mb-3">
-                    <label class="form-label" >Address</label>
-                    <input type="text" name="address" value="{{ $student->address }}" placeholder="Enter Address"
-                        required style="border:1px solid ;">
-
-                </div>
 
 
             </div>
 
 
             <div style="display:flex; justify-content:space-between;">
-                <a href="{{ route('students.index') }}" class="btn-back">Back</a>
-                <button type="submit" class="btn-submit">Save</button>
+                <a href="{{ route('category.index') }}" class="btn-back">Back</a>
+                <button type="submit" class="btn-submit">Update</button>
             </div>
         </form>
 

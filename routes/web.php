@@ -28,7 +28,7 @@ Route::post('/store/category', [CategoryController::class, 'store'])->name('cate
 Route::get('/show/category/{id}', [CategoryController::class, 'edit'])->name('category.show');
 Route::get('/edit/category/{id}', [CategoryController::class, 'edit'])->name('category.edit');
 Route::post('/update/category/{id}', [CategoryController::class, 'update'])->name('category.update');
-Route::get('/delete/category/{id}', [CategoryController::class, 'delete'])->name('category.destroy');
+Route::get('/delete/category/{id}', [CategoryController::class, 'destroy'])->name('category.destroy');
 
 
 require __DIR__.'/auth.php';

@@ -89,6 +89,9 @@
         .btn3:hover {
             background: #0056b3;
         }
+
+                @vite(['resources/css/app.css', 'resources/js/app.js'])
+
     </style>
 </head>
 
@@ -130,7 +133,7 @@
                             <td>
                                 <a href="{{ route('category.show', $row->id) }}" class="btn1">View</a>
                                 <a href="{{ route('category.edit', $row->id) }}" class="btn1">Edit</a>
-                                {{-- <a href="{{ route('category.destroy', $row->id) }}" class="btn2">Delete</a> --}}
+                                <a href="{{ route('category.destroy', $row->id) }}" class="btn btn-danger">Delete</a>
                                 <form action="{{ route('category.destroy', $row->id) }}" method="POST">
                                     @csrf
                                     @method('DELETE')
