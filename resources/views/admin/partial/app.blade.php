@@ -65,12 +65,12 @@
     <!--begin::App Wrapper-->
     <div class="app-wrapper">
       <!--begin::Header-->
-      @include('layouts.partial.topbar');
+      @include('admin.partial.topbar');
       <!--end::Header-->
 
 
       <!--begin::Sidebar-->
-      @include('layouts.partial.sidebar');
+      @include('admin.partial.sidebar');
       <!--end::Sidebar-->
 
       
@@ -519,7 +519,7 @@
       </main>
       <!--end::App Main-->
       <!--begin::Footer-->
-      @include('layouts.partial.footer')
+      @include('admin.partial.footer')
       <!--end::Footer-->
     </div>
     <!--end::App Wrapper-->
