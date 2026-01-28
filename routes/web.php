@@ -8,9 +8,18 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+// Route::get('/dashboard', function () {
+//     return view('dashboard');
+// })->middleware(['auth', 'verified'])->name('dashboard');
+
 Route::get('/dashboard', function () {
-    return view('dashboard');
+    return view('admin.partial.app');
 })->middleware(['auth', 'verified'])->name('dashboard');
+
+
+// Route::get('/home', function () {
+//     return view('admin.admin_home');
+// })->name('admin.home');
 
 
 Route::middleware('auth')->group(function () {
@@ -18,9 +27,9 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
-    Route::get('/admin', function () {
-        return view('admin.partial.app');
-    });
+    // Route::get('/admin', function () {
+    //     return view('admin.partial.app');
+    // });
 });
 
 
@@ -36,7 +45,10 @@ Route::get('/delete/category/{id}', [CategoryController::class, 'destroy'])->nam
 
 
 // Frontend
-Route::get('/', fn() => view('frontend.home'));
+// Route::get('/', fn() => view('frontend.home'));
+// Route::get('/', function () {
+//     return view('admin.partial.app');
+// });
 
 // // Admin
 // Route::middleware(['auth'])
