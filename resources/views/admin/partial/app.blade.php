@@ -13,7 +13,7 @@
   <!--end::Accessibility Meta Tags-->
 
   <meta name="supported-color-schemes" content="light dark" />
-  <link rel="preload" href="{{ asset('/css/adminlte.css" as="style" /') }} ">
+  <link rel="preload" href="{{ asset('css/adminlte.css') }} ">
   <!--end::Accessibility Features-->
   <!--begin::Fonts-->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/source-sans-3@5.0.12/index.css"
@@ -29,7 +29,6 @@
     crossorigin="anonymous" />
   <!--end::Third Party Plugin(Bootstrap Icons)-->
   <!--begin::Required Plugin(AdminLTE)-->
-  <link rel="stylesheet" href="{{ asset('/css/adminlte.css" /') }} ">
   <!--end::Required Plugin(AdminLTE)-->
   <!-- apexcharts -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/apexcharts@3.37.1/dist/apexcharts.css"
@@ -38,7 +37,15 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/jsvectormap@1.5.3/dist/css/jsvectormap.min.css"
     integrity="sha256-+uGLJmmTKOqBr+2E6KDYs/NRsHxSkONXFHUL0fy2O/4=" crossorigin="anonymous" />
 
-  @vite(['resources/css/admin.css', 'resources/css/adminlte.css', 'resources/js/admin.js', 'resources/js/adminlte.js'])
+
+
+  {{-- @vite(['resources/css/admin.css', 'resources/css/adminlte.css', 'resources/js/admin.js', 'resources/js/adminlte.js']) --}}
+   <!-- AdminLTE CSS -->
+    <link rel="stylesheet" href="{{ asset('css/adminlte.css') }}">
+    <link rel="stylesheet" href="{{ asset('js/adminlte.js') }}">
+  {{-- @vite(['resources/css/admin.css', 'resources/js/admin.js']) --}}
+    @vite(['resources/css/admin.css', 'resources/css/adminlte.css', 'resources/js/admin.js', 'resources/js/adminlte.js'])
+
 
 </head>
 <!--end::Head-->
@@ -51,7 +58,7 @@
 
 
 
-    {{-- @auth
+    @auth
       <!--begin::Header-->
       @include('admin.partial.topbar')
       <!--end::Header-->
@@ -59,11 +66,10 @@
       <!--begin::Sidebar-->
       @include('admin.partial.sidebar')
       <!--end::Sidebar-->
-    @endauth --}}
+    @endauth
 
 
     @yield('content')
-
 
 
     <!--begin::App Main-->
@@ -74,7 +80,7 @@
 
 
     <!--begin::Footer-->
-    {{-- @include('admin.partial.footer') --}}
+    @include('admin.partial.footer')
     <!--end::Footer-->
   </div>
   <!--end::App Wrapper-->

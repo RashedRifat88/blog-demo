@@ -15177,6 +15177,7 @@ html.maximized-card {
   align-items: center;
   justify-content: center;
   min-height: 100vh;
+  min-width: 100vw;
 }
 
 .login-box,

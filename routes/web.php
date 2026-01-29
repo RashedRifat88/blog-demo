@@ -12,8 +12,12 @@ Route::get('/', function () {
 //     return view('dashboard');
 // })->middleware(['auth', 'verified'])->name('dashboard');
 
+// Route::get('/dashboard', function () {
+//     return view('admin.partial.app');
+// })->middleware(['auth', 'verified'])->name('dashboard');
+
 Route::get('/dashboard', function () {
-    return view('admin.partial.app');
+    return view('admin.admin_home');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 
