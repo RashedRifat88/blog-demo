@@ -1,4 +1,71 @@
-<!DOCTYPE html>
+@extends('admin.partial.app')
+
+@section('content')
+
+<div class="container mt-4">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+
+            <div class="card shadow">
+                <div class="card-header fw-bold">
+                    Add New Class
+                </div>
+
+                <div class="card-body">
+
+                    @if (session('success'))
+                        <div class="alert alert-success">
+                            {{ session('success') }}
+                        </div>
+                    @endif
+
+                    <form action="{{ route('category.store') }}" method="POST">
+                        @csrf
+
+                        <div class="mb-3">
+                            <label class="form-label fw-semibold">Name</label>
+
+                            <input 
+                                type="text" 
+                                name="category_name" 
+                                value="{{ old('category_name') }}"
+                                class="form-control @error('category_name') is-invalid @enderror"
+                                placeholder="Enter Category Name"
+                                required
+                            >
+
+                            @error('category_name')
+                                <div class="invalid-feedback">
+                                    {{ $message }}
+                                </div>
+                            @enderror
+                        </div>
+
+                        <div class="d-flex justify-content-between">
+                            <a href="{{ route('category.index') }}" class="btn btn-secondary">
+                                Back
+                            </a>
+
+                            <button type="submit" class="btn btn-success">
+                                Save
+                            </button>
+                        </div>
+
+                    </form>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+@endsection
+
+
+
+
+{{-- <!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -118,4 +185,4 @@
 
 </body>
 
-</html>
+</html> --}}

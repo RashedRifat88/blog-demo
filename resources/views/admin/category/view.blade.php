@@ -1,4 +1,81 @@
-<!DOCTYPE html>
+@extends('admin.partial.app')
+
+@section('content')
+
+<div class="container mt-4">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+
+            <div class="card shadow">
+                <div class="card-header fw-bold">
+                    Student Details
+                </div>
+
+                <div class="card-body">
+
+                    @php
+                        $className = $classes->firstWhere('id', $student->class_id)?->class_name;
+                    @endphp
+
+                    <div class="mb-3">
+                        <label class="form-label fw-semibold">Class</label>
+                        <input type="text" 
+                               class="form-control" 
+                               value="{{ $className }}" 
+                               readonly>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label fw-semibold">Name</label>
+                        <input type="text" 
+                               class="form-control" 
+                               value="{{ $student->name }}" 
+                               readonly>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label fw-semibold">Roll</label>
+                        <input type="text" 
+                               class="form-control" 
+                               value="{{ $student->roll }}" 
+                               readonly>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label fw-semibold">Email</label>
+                        <input type="text" 
+                               class="form-control" 
+                               value="{{ $student->email }}" 
+                               readonly>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label fw-semibold">Address</label>
+                        <input type="text" 
+                               class="form-control" 
+                               value="{{ $student->address }}" 
+                               readonly>
+                    </div>
+
+                    <div class="d-flex justify-content-between">
+                        <a href="{{ route('students.index') }}" class="btn btn-secondary">
+                            Back
+                        </a>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+@endsection
+
+
+
+
+{{-- <!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -158,4 +235,4 @@
 
 </body>
 
-</html>
+</html> --}}

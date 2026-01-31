@@ -1,4 +1,85 @@
-<!DOCTYPE html>
+@extends('admin.partial.app')
+
+@section('content')
+
+<div class="container mt-4">
+
+    <div class="card shadow-sm rounded-3">
+        <div class="card-header bg-white fw-bold fs-5">
+            Category List
+        </div>
+
+        <div class="card-body">
+
+            <div class="d-flex justify-content-end mb-3">
+                <a href="{{ route('category.create') }}" class="btn btn-success">
+                    Add New
+                </a>
+            </div>
+
+            @if (session('success'))
+                <div class="alert alert-success">
+                    {{ session('success') }}
+                </div>
+            @endif
+
+            <div class="table-responsive">
+                <table class="table table-hover align-middle">
+                    <thead class="table-light">
+                        <tr>
+                            <th>SL</th>
+                            <th>Name</th>
+                            <th>Slug</th>
+                            <th width="220">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach ($categories as $key => $row)
+                            <tr>
+                                <td>{{ $key + 1 }}</td>
+                                <td>{{ $row->category_name }}</td>
+                                <td>{{ $row->category_slug }}</td>
+                                <td>
+                                    <a href="{{ route('category.show', $row->id) }}"
+                                        class="btn btn-sm btn-primary">
+                                        View
+                                    </a>
+
+                                    <a href="{{ route('category.edit', $row->id) }}"
+                                        class="btn btn-sm btn-warning">
+                                        Edit
+                                    </a>
+
+                                    <form action="{{ route('category.destroy', $row->id) }}"
+                                          method="POST"
+                                          class="d-inline">
+                                        @csrf
+                                        @method('DELETE')
+
+                                        <button type="submit"
+                                                class="btn btn-sm btn-danger"
+                                                onclick="return confirm('Are you sure?')">
+                                            Delete
+                                        </button>
+                                    </form>
+
+                                </td>
+                            </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+    </div>
+
+</div>
+
+@endsection
+
+
+
+{{-- <!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -154,4 +235,4 @@
 
 </body>
 
-</html>
+</html> --}}

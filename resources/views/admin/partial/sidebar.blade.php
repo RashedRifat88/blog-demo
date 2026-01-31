@@ -60,31 +60,26 @@
           <a class="nav-link" href="#">
             <i class="nav-icon bi bi-box-seam-fill"></i>
             <p>
-              Widgets
+              Categories
               <i class="nav-arrow bi bi-chevron-right"></i>
             </p>
           </a>
           <ul class="nav nav-treeview">
             <li class="nav-item">
-              <a class="nav-link" href="{{ asset('/widgets/small-box.html') }}">
+              <a class="nav-link" href="{{ route('category.create') }}">
                 <i class="nav-icon bi bi-circle"></i>
-                <p>Small Box</p>
+                <p>Add New Category</p>
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="{{ asset('/widgets/info-box.html') }}">
+              <a class="nav-link" href="{{ route('category.index') }}">
                 <i class="nav-icon bi bi-circle"></i>
-                <p>info Box</p>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="{{ asset('/widgets/cards.html') }}">
-                <i class="nav-icon bi bi-circle"></i>
-                <p>Cards</p>
+                <p>All Category</p>
               </a>
             </li>
           </ul>
         </li>
+        {{-- 
         <li class="nav-item">
           <a class="nav-link" href="#">
             <i class="nav-icon bi bi-clipboard-fill"></i>
@@ -431,7 +426,7 @@
             <i class="nav-icon bi bi-circle-fill"></i>
             <p>Level 1</p>
           </a>
-        </li>
+        </li> --}}
         <li class="nav-header">LABELS</li>
         <li class="nav-item">
           <a class="nav-link" href="#">

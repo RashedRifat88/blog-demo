@@ -36,15 +36,28 @@
   <!-- jsvectormap -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/jsvectormap@1.5.3/dist/css/jsvectormap.min.css"
     integrity="sha256-+uGLJmmTKOqBr+2E6KDYs/NRsHxSkONXFHUL0fy2O/4=" crossorigin="anonymous" />
+  <!-- datatable -->
+  <link href="{{ asset('css/bootstrap.min.css')}}" rel="stylesheet" type="text/css" />
+  <!-- font Awesome -->
+  <link href="{{ asset('css/font-awesome.min.css')}}" rel="stylesheet" type="text/css" />
+  <!-- Ionicons -->
+  <link href="{{ asset('css/ionicons.min.css')}}" rel="stylesheet" type="text/css" />
+  <!-- DATA TABLES -->
+  <link href="{{ asset('css/datatables/dataTables.bootstrap.css')}}" rel="stylesheet" type="text/css" />
+  <!-- Theme style -->
+  <link href="{{ asset('css/AdminLTE.css')}}" rel="stylesheet" type="text/css" />
+  <!-- datatable -->
 
 
 
-  {{-- @vite(['resources/css/admin.css', 'resources/css/adminlte.css', 'resources/js/admin.js', 'resources/js/adminlte.js']) --}}
-   <!-- AdminLTE CSS -->
-    <link rel="stylesheet" href="{{ asset('css/adminlte.css') }}">
-    <link rel="stylesheet" href="{{ asset('js/adminlte.js') }}">
+
+  {{-- @vite(['resources/css/admin.css', 'resources/css/adminlte.css', 'resources/js/admin.js',
+  'resources/js/adminlte.js']) --}}
+  <!-- AdminLTE CSS -->
+  <link rel="stylesheet" href="{{ asset('css/adminlte.css') }}">
+  <link rel="stylesheet" href="{{ asset('js/adminlte.js') }}">
   {{-- @vite(['resources/css/admin.css', 'resources/js/admin.js']) --}}
-    @vite(['resources/css/admin.css', 'resources/css/adminlte.css', 'resources/js/admin.js', 'resources/js/adminlte.js'])
+  @vite(['resources/css/admin.css', 'resources/css/adminlte.css', 'resources/js/admin.js', 'resources/js/adminlte.js'])
 
 
 </head>
@@ -74,7 +87,7 @@
 
     <!--begin::App Main-->
     {{-- @include('admin.admin_home') --}}
-    
+
     <!--end::App Content-->
     <!--end::App Main-->
 
@@ -305,6 +318,33 @@
     crossorigin="anonymous"></script>
 
   @yield('scripts')
+
+
+
+          <!-- jQuery 2.0.2 -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
+        <!-- Bootstrap -->
+        <script src="{{ asset('js/bootstrap.min.js')}}" type="text/javascript"></script>
+        <!-- DATA TABES SCRIPT -->
+        <script src="{{ asset('js/plugins/datatables/jquery.dataTables.js')}}" type="text/javascript"></script>
+        <script src="{{ asset('js/plugins/datatables/dataTables.bootstrap.js')}}" type="text/javascript"></script>
+        <!-- AdminLTE App -->
+        <script src="{{ asset('js/AdminLTE/app.js')}}" type="text/javascript"></script>
+
+        <!-- page script -->
+        <script type="text/javascript">
+            $(function() {
+                $("#example1").dataTable();
+                $('#example2').dataTable({
+                    "bPaginate": true,
+                    "bLengthChange": false,
+                    "bFilter": false,
+                    "bSort": true,
+                    "bInfo": true,
+                    "bAutoWidth": false
+                });
+            });
+        </script>
 
 
 </body>

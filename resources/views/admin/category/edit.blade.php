@@ -1,4 +1,89 @@
-<!DOCTYPE html>
+@extends('admin.partial.app')
+
+@section('content')
+
+<div class="container mt-4">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+
+            <div class="card shadow">
+                <div class="card-header fw-bold">
+                    Edit Category
+                </div>
+
+                <div class="card-body">
+
+                    @if (session('success'))
+                        <div class="alert alert-success">
+                            {{ session('success') }}
+                        </div>
+                    @endif
+
+                    <form action="{{ route('category.update', $categories->id) }}" method="POST">
+                        @csrf
+                        @method('PUT') {{-- IMPORTANT: use PUT for update --}}
+
+                        {{-- If you want Class dropdown, uncomment this --}}
+                        {{--
+                        <div class="mb-3">
+                            <label class="form-label fw-semibold">Class</label>
+                            <select class="form-select" name="class_id" required>
+                                @foreach ($classes as $row)
+                                    <option value="{{ $row->id }}"
+                                        {{ $row->id == $categories->class_id ? 'selected' : '' }}>
+                                        {{ $row->class_name }}
+                                    </option>
+                                @endforeach
+                            </select>
+                        </div>
+                        --}}
+
+                        <div class="mb-3">
+                            <label class="form-label fw-semibold">
+                                Category Name
+                            </label>
+
+                            <input 
+                                type="text"
+                                name="category_name"
+                                value="{{ old('category_name', $categories->category_name) }}"
+                                class="form-control @error('category_name') is-invalid @enderror"
+                                placeholder="Enter Category Name"
+                                required
+                            >
+
+                            @error('category_name')
+                                <div class="invalid-feedback">
+                                    {{ $message }}
+                                </div>
+                            @enderror
+                        </div>
+
+                        <div class="d-flex justify-content-between">
+                            <a href="{{ route('category.index') }}" class="btn btn-secondary">
+                                Back
+                            </a>
+
+                            <button type="submit" class="btn btn-primary">
+                                Update
+                            </button>
+                        </div>
+
+                    </form>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+@endsection
+
+
+
+
+{{-- <!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -101,7 +186,7 @@
                             @endforeach
                     </select>
 
-                </div> --}}
+                </div> 
 
                 
                 <div style="margin-bottom: 20px" class="mb-3">
@@ -126,4 +211,5 @@
 
 </body>
 
-</html>
+</html> 
+--}}
