@@ -8,9 +8,14 @@ class Category extends Model
 {
     //
 
-       protected $fillable = [
+    protected $fillable = [
         'category_name',
         'category_slug',
     ];
 
+
+
+    public function setCategoryNameAttribute($value) {
+        $this->attributes['category_name'] = ucfirst($value);
+    }
 }

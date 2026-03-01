@@ -56,6 +56,7 @@
             <p>Theme Generate</p>
           </a>
         </li>
+
         <li class="nav-item">
           <a class="nav-link" href="#">
             <i class="nav-icon bi bi-box-seam-fill"></i>
@@ -79,6 +80,56 @@
             </li>
           </ul>
         </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="#">
+            <i class="nav-icon bi bi-box-seam-fill"></i>
+            <p>
+              Sub Categories
+              <i class="nav-arrow bi bi-chevron-right"></i>
+            </p>
+          </a>
+          <ul class="nav nav-treeview">
+            <li class="nav-item">
+              <a class="nav-link" href="{{ route('sub-category.create') }}">
+                <i class="nav-icon bi bi-circle"></i>
+                <p>Add New Sub Category</p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{{ route('sub-category.index') }}">
+                <i class="nav-icon bi bi-circle"></i>
+                <p>All Sub Category</p>
+              </a>
+            </li>
+          </ul>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="#">
+            <i class="nav-icon bi bi-box-seam-fill"></i>
+            <p>
+              Posts
+              <i class="nav-arrow bi bi-chevron-right"></i>
+            </p>
+          </a>
+          <ul class="nav nav-treeview">
+            <li class="nav-item">
+              <a class="nav-link" href="{{ route('post.create') }}">
+                <i class="nav-icon bi bi-circle"></i>
+                <p>Add New Post</p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{{ route('post.index') }}">
+                <i class="nav-icon bi bi-circle"></i>
+                <p>Manage Post</p>
+              </a>
+            </li>
+          </ul>
+        </li>
+
+
         {{-- 
         <li class="nav-item">
           <a class="nav-link" href="#">

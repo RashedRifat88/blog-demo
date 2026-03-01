@@ -51,17 +51,17 @@ class CategoryController extends Controller
 
         $cat = new Category;
         $cat->category_name = $request->category_name;
-        $cat->category_slug = $slug = Str::of($request->category_name)->slug('-');;
+        $cat->category_slug = Str::of($request->category_name)->slug('-');;
         $cat->save();
-
-
-
 
 
 
         // dd($cat);
 
-        return redirect()->back();
+        return redirect()->route('category.index')
+                 ->with('success', 'Category created successfully!');
+
+        // return redirect()->back();
     }
 
     /**
@@ -101,7 +101,9 @@ class CategoryController extends Controller
         $cat->save();
 
 
-        return redirect()->route('category.index');
+        // return redirect()->route('category.index');
+          return redirect()->route('category.index')
+                 ->with('success', 'Category updated successfully!');
     }
 
     /**
@@ -115,4 +117,8 @@ class CategoryController extends Controller
         $cat->delete();
         return redirect()->back();
     }
+
+
+
+
 }

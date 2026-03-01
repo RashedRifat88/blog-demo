@@ -45,4 +45,12 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+
+
+
+    //accessor
+    public function getNameEmailAttribute()
+    {
+        return $this->name . " - " . $this->email;    //name_email
+    }
 }

@@ -10,6 +10,7 @@
                 <div class="row">
                     <div class="col-sm-6">
                         <h3 class="mb-0">Dashboard</h3>
+                        {{ Auth::user()->name_email }}
                     </div>
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-end">

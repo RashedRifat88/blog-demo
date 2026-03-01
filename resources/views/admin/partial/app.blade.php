@@ -30,6 +30,10 @@
   <!--end::Third Party Plugin(Bootstrap Icons)-->
   <!--begin::Required Plugin(AdminLTE)-->
   <!--end::Required Plugin(AdminLTE)-->
+
+
+
+
   <!-- apexcharts -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/apexcharts@3.37.1/dist/apexcharts.css"
     integrity="sha256-4MX+61mt9NVvvuPjUWdUdyfZfxSB1/Rf9WtqRHgG5S0=" crossorigin="anonymous" />
@@ -50,6 +54,33 @@
 
 
 
+  <!-- jQuery (Required for DataTables) -->
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+
+  <!-- DataTables -->
+  <script src="https://cdn.datatables.net/1.13.8/js/jquery.dataTables.min.js"></script>
+  <script src="https://cdn.datatables.net/1.13.8/js/dataTables.bootstrap5.min.js"></script>
+
+  <!-- DataTables CSS -->
+  <link rel="stylesheet" href="https://cdn.datatables.net/1.13.8/css/dataTables.bootstrap5.min.css">
+  <link rel="stylesheet" href="https://cdn.datatables.net/buttons/2.4.2/css/buttons.bootstrap5.min.css">
+
+  <!-- Buttons Extension -->
+  <script src="https://cdn.datatables.net/buttons/2.4.2/js/dataTables.buttons.min.js"></script>
+  <script src="https://cdn.datatables.net/buttons/2.4.2/js/buttons.bootstrap5.min.js"></script>
+
+  <!-- Export Dependencies -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.7/pdfmake.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.7/vfs_fonts.js"></script>
+
+  <!-- Export Buttons -->
+  <script src="https://cdn.datatables.net/buttons/2.4.2/js/buttons.html5.min.js"></script>
+  <script src="https://cdn.datatables.net/buttons/2.4.2/js/buttons.print.min.js"></script>
+
+  
+
+
 
   {{-- @vite(['resources/css/admin.css', 'resources/css/adminlte.css', 'resources/js/admin.js',
   'resources/js/adminlte.js']) --}}
@@ -58,6 +89,16 @@
   <link rel="stylesheet" href="{{ asset('js/adminlte.js') }}">
   {{-- @vite(['resources/css/admin.css', 'resources/js/admin.js']) --}}
   @vite(['resources/css/admin.css', 'resources/css/adminlte.css', 'resources/js/admin.js', 'resources/js/adminlte.js'])
+
+
+  <!-- Toastr -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" />
+
+  <!-- SweetAlert2 -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+
+    <!-- summernote -->
+  <link rel="stylesheet" href="{{ asset('plugins/summernote/summernote-bs4.min.css')}}">
 
 
 </head>
@@ -102,249 +143,109 @@
 
 
   <!--begin::Script-->
-  <!--begin::Third Party Plugin(OverlayScrollbars)-->
-
-  {{--
-  <script src="https://cdn.jsdelivr.net/npm/overlayscrollbars@2.11.0/browser/overlayscrollbars.browser.es6.min.js"
-    crossorigin="anonymous"></script>
-  <!--end::Third Party Plugin(OverlayScrollbars)--><!--begin::Required Plugin(popperjs for Bootstrap 5)-->
-  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
-    crossorigin="anonymous"></script>
-  <!--end::Required Plugin(popperjs for Bootstrap 5)--><!--begin::Required Plugin(Bootstrap 5)-->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.min.js" crossorigin="anonymous"></script>
-  <!--end::Required Plugin(Bootstrap 5)--><!--begin::Required Plugin(AdminLTE)-->
-  <script src="{{ asset('/js/adminlte.js"></script') }} ">
-    <!--end::Required Plugin(AdminLTE)--><!--begin::OverlayScrollbars Configure-->
-    <script>
-      const SELECTOR_SIDEBAR_WRAPPER = '.sidebar-wrapper';
-      const Default = {
-        scrollbarTheme: 'os-theme-light',
-        scrollbarAutoHide: 'leave',
-        scrollbarClickScroll: true,
-      };
-      document.addEventListener('DOMContentLoaded', function () {
-        const sidebarWrapper = document.querySelector(SELECTOR_SIDEBAR_WRAPPER);
-        if (sidebarWrapper && OverlayScrollbarsGlobal?.OverlayScrollbars !== undefined) {
-          OverlayScrollbarsGlobal.OverlayScrollbars(sidebarWrapper, {
-            scrollbars: {
-              theme: Default.scrollbarTheme,
-              autoHide: Default.scrollbarAutoHide,
-              clickScroll: Default.scrollbarClickScroll,
-            },
-          });
-        }
-      });
-    </script>
-  <!--end::OverlayScrollbars Configure-->
-  <!-- OPTIONAL SCRIPTS -->
-  <!-- sortablejs -->
-  <script src="https://cdn.jsdelivr.net/npm/sortablejs@1.15.0/Sortable.min.js" crossorigin="anonymous"></script>
-  <!-- sortablejs -->
-  <script>
-    new Sortable(document.querySelector('.connectedSortable'), {
-      group: 'shared',
-      handle: '.card-header',
-    });
-
-    const cardHeaders = document.querySelectorAll('.connectedSortable .card-header');
-    cardHeaders.forEach((cardHeader) => {
-      cardHeader.style.cursor = 'move';
-    });
-  </script>
-  <!-- apexcharts -->
-  <script src="https://cdn.jsdelivr.net/npm/apexcharts@3.37.1/dist/apexcharts.min.js"
-    integrity="sha256-+vh8GkaU7C9/wbSLIcwq82tQ2wTf44aOHA8HlBMwRI8=" crossorigin="anonymous"></script>
-  <!-- ChartJS -->
-  <script>
-    // NOTICE!! DO NOT USE ANY OF THIS JAVASCRIPT
-    // IT'S ALL JUST JUNK FOR DEMO
-    // ++++++++++++++++++++++++++++++++++++++++++
-
-    const sales_chart_options = {
-      series: [
-        {
-          name: 'Digital Goods',
-          data: [28, 48, 40, 19, 86, 27, 90],
-        },
-        {
-          name: 'Electronics',
-          data: [65, 59, 80, 81, 56, 55, 40],
-        },
-      ],
-      chart: {
-        height: 300,
-        type: 'area',
-        toolbar: {
-          show: false,
-        },
-      },
-      legend: {
-        show: false,
-      },
-      colors: ['#0d6efd', '#20c997'],
-      dataLabels: {
-        enabled: false,
-      },
-      stroke: {
-        curve: 'smooth',
-      },
-      xaxis: {
-        type: 'datetime',
-        categories: [
-          '2023-01-01',
-          '2023-02-01',
-          '2023-03-01',
-          '2023-04-01',
-          '2023-05-01',
-          '2023-06-01',
-          '2023-07-01',
-        ],
-      },
-      tooltip: {
-        x: {
-          format: 'MMMM yyyy',
-        },
-      },
-    };
-
-    const sales_chart = new ApexCharts(
-      document.querySelector('#revenue-chart'),
-      sales_chart_options,
-    );
-    sales_chart.render();
-  </script>
-  <!-- jsvectormap -->
-  <script src="https://cdn.jsdelivr.net/npm/jsvectormap@1.5.3/dist/js/jsvectormap.min.js"
-    integrity="sha256-/t1nN2956BT869E6H4V1dnt0X5pAQHPytli+1nTZm2Y=" crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/jsvectormap@1.5.3/dist/maps/world.js"
-    integrity="sha256-XPpPaZlU8S/HWf7FZLAncLg2SAkP8ScUTII89x9D3lY=" crossorigin="anonymous"></script>
-  <!-- jsvectormap -->
-  <script>
-    // World map by jsVectorMap
-    new jsVectorMap({
-      selector: '#world-map',
-      map: 'world',
-    });
-
-    // Sparkline charts
-    const option_sparkline1 = {
-      series: [
-        {
-          data: [1000, 1200, 920, 927, 931, 1027, 819, 930, 1021],
-        },
-      ],
-      chart: {
-        type: 'area',
-        height: 50,
-        sparkline: {
-          enabled: true,
-        },
-      },
-      stroke: {
-        curve: 'straight',
-      },
-      fill: {
-        opacity: 0.3,
-      },
-      yaxis: {
-        min: 0,
-      },
-      colors: ['#DCE6EC'],
-    };
-
-    const sparkline1 = new ApexCharts(document.querySelector('#sparkline-1'), option_sparkline1);
-    sparkline1.render();
-
-    const option_sparkline2 = {
-      series: [
-        {
-          data: [515, 519, 520, 522, 652, 810, 370, 627, 319, 630, 921],
-        },
-      ],
-      chart: {
-        type: 'area',
-        height: 50,
-        sparkline: {
-          enabled: true,
-        },
-      },
-      stroke: {
-        curve: 'straight',
-      },
-      fill: {
-        opacity: 0.3,
-      },
-      yaxis: {
-        min: 0,
-      },
-      colors: ['#DCE6EC'],
-    };
-
-    const sparkline2 = new ApexCharts(document.querySelector('#sparkline-2'), option_sparkline2);
-    sparkline2.render();
-
-    const option_sparkline3 = {
-      series: [
-        {
-          data: [15, 19, 20, 22, 33, 27, 31, 27, 19, 30, 21],
-        },
-      ],
-      chart: {
-        type: 'area',
-        height: 50,
-        sparkline: {
-          enabled: true,
-        },
-      },
-      stroke: {
-        curve: 'straight',
-      },
-      fill: {
-        opacity: 0.3,
-      },
-      yaxis: {
-        min: 0,
-      },
-      colors: ['#DCE6EC'],
-    };
-
-    const sparkline3 = new ApexCharts(document.querySelector('#sparkline-3'), option_sparkline3);
-    sparkline3.render();
-  </script>
-  <!--end::Script--> --}}
-
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
     crossorigin="anonymous"></script>
 
+
+
+
+  {{-- <!-- jQuery 2.0.2 -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
+  <!-- Bootstrap -->
+  <script src="{{ asset('js/bootstrap.min.js')}}" type="text/javascript"></script>
+  <!-- DATA TABES SCRIPT -->
+  <script src="{{ asset('js/plugins/datatables/jquery.dataTables.js')}}" type="text/javascript"></script>
+  <script src="{{ asset('js/plugins/datatables/dataTables.bootstrap.js')}}" type="text/javascript"></script>
+  <!-- AdminLTE App -->
+  <script src="{{ asset('js/AdminLTE/app.js')}}" type="text/javascript"></script>
+
+  <!-- page script -->
+  <script type="text/javascript">
+    $(function () {
+      $("#example1").dataTable();
+      $('#example2').dataTable({
+        "bPaginate": true,
+        "bLengthChange": false,
+        "bFilter": false,
+        "bSort": true,
+        "bInfo": true,
+        "bAutoWidth": false
+      });
+    });
+  </script> --}}
+
+
+  @stack('scripts')
+
+
+
+  <!-- jQuery (only if not already loaded) -->
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <!-- Toastr -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+  <!-- SweetAlert2 -->
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script>
+    @if(session('success'))
+      toastr.success("{{ session('success') }}");
+    @endif
+
+    @if(session('error'))
+      toastr.error("{{ session('error') }}");
+    @endif
+
+    @if(session('warning'))
+      toastr.warning("{{ session('warning') }}");
+    @endif
+
+    @if(session('info'))
+      toastr.info("{{ session('info') }}");
+    @endif
+  </script>
+
+  <!-- Summernote -->
+  <script src="{{ asset('plugins/summernote/summernote-bs4.min.js')}}"></script>
+
+
+  <script>
+    $(document).on('click', '.delete-btn', function () {
+
+      let id = $(this).data('id');
+
+      Swal.fire({
+        title: 'Are you sure?',
+        text: "You won't be able to revert this!",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#d33',
+        cancelButtonColor: '#6c757d',
+        confirmButtonText: 'Yes, delete it!'
+      }).then((result) => {
+        if (result.isConfirmed) {
+          document.getElementById('delete-form-' + id).submit();
+        }
+      });
+
+    });
+  </script>
+
+  <script>
+    $(function () {
+      // Summernote
+      $('.summernote').summernote()
+
+      // CodeMirror
+      CodeMirror.fromTextArea(document.getElementById("codeMirrorDemo"), {
+        mode: "htmlmixed",
+        theme: "monokai"
+      });
+    })
+  </script>
+
+
+
   @yield('scripts')
-
-
-
-          <!-- jQuery 2.0.2 -->
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
-        <!-- Bootstrap -->
-        <script src="{{ asset('js/bootstrap.min.js')}}" type="text/javascript"></script>
-        <!-- DATA TABES SCRIPT -->
-        <script src="{{ asset('js/plugins/datatables/jquery.dataTables.js')}}" type="text/javascript"></script>
-        <script src="{{ asset('js/plugins/datatables/dataTables.bootstrap.js')}}" type="text/javascript"></script>
-        <!-- AdminLTE App -->
-        <script src="{{ asset('js/AdminLTE/app.js')}}" type="text/javascript"></script>
-
-        <!-- page script -->
-        <script type="text/javascript">
-            $(function() {
-                $("#example1").dataTable();
-                $('#example2').dataTable({
-                    "bPaginate": true,
-                    "bLengthChange": false,
-                    "bFilter": false,
-                    "bSort": true,
-                    "bInfo": true,
-                    "bAutoWidth": false
-                });
-            });
-        </script>
 
 
 </body>
